@@ -1,5 +1,5 @@
 import { Injectable } from '@nestjs/common';
-import { User } from './interfaces/book.interface';
+import { User } from './interfaces/user.interface';
 import { DummyDb } from '../common/services/dummy-db.service';
 import { EventEmitter2 } from '@nestjs/event-emitter';
 

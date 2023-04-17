@@ -11,21 +11,22 @@ export class BooksService {
   }
 
   async get(id: string): Promise<Book> {
-    return this.db.get<Book>('books', id);
-  }
-
-  async create(book: Book): Promise<{ id: string; book: Book }> {
-    const recordId = await this.db.insert('books', book);
-
-    // Return
     return {
-      id: recordId,
-      book,
+      id,
+      ...(await this.db.get<Book>('books', id)),
     };
   }
 
-  async update(id: string, book: Book): Promise<boolean> {
-    return await this.db.update('books', id, book);
+  async create(book: Book): Promise<Book> {
+    const recordId = await this.db.insert('books', book);
+
+    // Return
+    return this.get(recordId);
+  }
+
+  async update(id: string, book: Book): Promise<Book> {
+    await this.db.update('books', id, book);
+    return this.get(id);
   }
 
   async delete(id: string): Promise<boolean> {

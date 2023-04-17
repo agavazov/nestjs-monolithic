@@ -12,12 +12,8 @@ export class AuthenticatedGuard implements CanActivate {
 
     // Get defined roles
     let roles = [];
-    roles = roles.concat(
-      this.reflector.get<string[]>('roles', context.getClass()) || [],
-    );
-    roles = roles.concat(
-      this.reflector.get<string[]>('roles', context.getHandler()) || [],
-    );
+    roles = roles.concat(this.reflector.get<string[]>('roles', context.getClass()) || []);
+    roles = roles.concat(this.reflector.get<string[]>('roles', context.getHandler()) || []);
 
     // To show unauthorized/unauthenticated errors use some guard
     dummyLog('Example how to get the roles data in guards', roles);

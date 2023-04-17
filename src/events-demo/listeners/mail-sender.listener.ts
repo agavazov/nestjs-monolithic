@@ -4,7 +4,7 @@ import { OnEvent } from '@nestjs/event-emitter';
 @Injectable()
 export class MailSenderListener {
   @OnEvent('user.registration')
-  handleOrderCreatedEvent(event) {
-    console.log('👂 mail-sender.listener', 'SEND WELCOME EMAIL', event);
+  async handleRegistration(eventData) {
+    console.log('👂 mail-sender.listener', 'SEND WELCOME EMAIL', eventData);
   }
 }

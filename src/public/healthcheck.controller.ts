@@ -9,9 +9,7 @@ export class HealthcheckController {
 
   @Roles(Role.unprotected)
   @Get('/healthcheck')
-  async healthcheckStatus(): Promise<
-    ReturnType<HealthcheckService['getServices']>
-  > {
+  async healthcheckStatus(): Promise<ReturnType<HealthcheckService['getServices']>> {
     return this.healthcheckService.getServices();
   }
 }

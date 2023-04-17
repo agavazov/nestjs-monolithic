@@ -7,9 +7,7 @@ export class RegistrationController {
   constructor(private readonly registrationService: RegistrationService) {}
 
   @Get()
-  async create(
-    @Query() data: CreateUserDto,
-  ): ReturnType<RegistrationService['create']> {
+  async create(@Query() data: CreateUserDto): ReturnType<RegistrationService['create']> {
     return await this.registrationService.create(data);
   }
 }

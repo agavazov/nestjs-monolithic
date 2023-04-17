@@ -1,10 +1,4 @@
-import {
-  IsDefined,
-  IsNotEmpty,
-  IsNumber,
-  IsString,
-  Matches,
-} from 'class-validator';
+import { IsDefined, IsNotEmpty, IsNumber, IsString, Matches } from 'class-validator';
 import { Transform } from 'class-transformer';
 
 export class CreateBookDto {
@@ -16,7 +10,7 @@ export class CreateBookDto {
   @IsDefined()
   @IsNotEmpty()
   @IsString()
-  @Matches('^[A-Za-z][0-9]$') // Example for only latin and numbers
+  @Matches('^[^А-Яа-я]*$') // Example for only latin and numbers
   readonly description: string;
 
   @IsNotEmpty()

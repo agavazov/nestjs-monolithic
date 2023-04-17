@@ -1,11 +1,4 @@
-import {
-  Body,
-  Controller,
-  Get,
-  HttpException,
-  HttpStatus,
-  Post,
-} from '@nestjs/common';
+import { Body, Controller, Get, HttpException, HttpStatus, Post } from '@nestjs/common';
 import { LoginService } from './login.service';
 import { LoginDto } from './dto/login.dto';
 
@@ -32,9 +25,7 @@ export class LoginController {
   }
 
   @Post()
-  async showUserInfo(
-    @Body() { email, password }: LoginDto,
-  ): ReturnType<LoginService['getUser']> {
+  async showUserInfo(@Body() { email, password }: LoginDto): ReturnType<LoginService['getUser']> {
     try {
       return await this.loginService.getUser(email, password);
     } catch (e) {
@@ -46,7 +37,7 @@ export class LoginController {
         HttpStatus.FORBIDDEN,
         {
           cause: e,
-        },
+        }
       );
     }
   }

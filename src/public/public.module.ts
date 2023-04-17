@@ -7,11 +7,7 @@ import { PreferencesController } from './preferences.controller';
 
 @Module({
   imports: [],
-  controllers: [
-    WelcomeController,
-    HealthcheckController,
-    PreferencesController,
-  ],
+  controllers: [WelcomeController, HealthcheckController, PreferencesController],
   providers: [HealthcheckService, PreferencesService],
 })
 export class PublicModule {}
