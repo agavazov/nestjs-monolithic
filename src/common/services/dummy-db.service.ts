@@ -65,10 +65,9 @@ export class DummyDb {
 
     if (this?.storage?.[table]?.[id]) {
       this.storage[table][id] = data;
+      await this.rewrite();
       return true;
     }
-
-    await this.rewrite();
 
     return false;
   }
@@ -78,10 +77,9 @@ export class DummyDb {
 
     if (this?.storage?.[table]?.[id]) {
       delete this.storage[table][id];
+      await this.rewrite();
       return true;
     }
-
-    await this.rewrite();
 
     return false;
   }
